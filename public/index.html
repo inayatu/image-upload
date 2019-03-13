@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Test </title>
+</head>
+<style type="text/css">
+	
+	.uploadBox{
+		padding: 14px;
+		border: 2px grey solid;
+	}
+
+</style>
+<body>	
+
+	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+	<h2>Upload File here</h2>
+	<span class="uplodBox">
+		<form enctype="multipart/form-data" action="/api/upload" method="POST">
+			<label  for="uploadme">
+				<input id="uploadme" type="file" name="uploadme">
+			</label>
+			<button type="submit"> Upload </button>	
+		</form>
+		
+		<!-- <input id="uploadme" type="file" name="uploadme">
+		<button onclick="uploadFile()"> Upload </button> -->	
+	
+	</span>
+
+</body>
+
+<script type="text/javascript">
+	uploadFile = () =>{
+		const url = "http://localhost:3000/api/upload"
+		const file = document.getElementById("uploadme").value;
+		console.log('file: ', file)
+		fetch(url, {
+	        method: "POST",
+	        headers: {
+	        	// "Content-Type": "multipart/form-data",
+	        	// Content-Type": "application/x-www-form-urlencoded",
+	        },
+	        body: JSON.stringify({file: file}),
+	    })
+	    .then(response => {
+	    	// let res = response.json();
+	    	console.log('res', response	)
+	    })
+	    .catch(err =>{
+	    	console.log('err', err)
+	    }); 
+	}
+</script>
+</html>
